@@ -1,162 +1,200 @@
-/*
-===========================================================
-A loop repeats a block of code multiple times, so we don't have to repeat it
-copy-paste the same line over and over again.
-Whenever you catch yourself repeating something, a loop is the ansewr
-UNLESS, you are repeating a functionality and not a logical process
-*/
+//1.
 
-// THE >>FOR<< Loop
-/*
-The classic loop. it has three paretrs inside the parantheses, separated by semicolons:
+let i = 1;
 
-for (start; condition; step) {
-.......
+while (i <= 10) {
+  console.log(i);
+  i++;
 }
 
-start: runs ONCE at the beginning (usually a counter)
-condition: checked BEFORE each round, loop runs while it's true
-step: runs at the END of each round (usually i++ add 1);
+//2.
 
-i++ means "increase i by 1" . Read the loop below as:
-"start at 1, keep goind while i is 8 or less, add 1 each time"
-*/
+let arr01 = [1, 2, 3, 4, 5];
 
-for (let i = 1; i <= 8; i++) {
-  console.log(`the planet number is + ${i}`);
-} //will print number 1, 2, 3, ...., 8
+for (let i = 0; i < arr01.length; i++) {
+  console.log(arr01[i]);
+}
 
-/* THE >>2. Looping over an ARRAY with for<< Loop
-Arrays are numbered lists, and the numbering (index) starts at 0, not 1.
-So the first planet is planet[0].
+//3.
 
-.length give how many items are in the array. We loop from index 0 to length -1
-*/
+for (let i = 0; i <= 10; i += 2) {
+  console.log(i);
+}
 
-const planets = ["Mercury", "Venus", "Earth", "Mars"];
+//4.
 
-for (let i = 0; i < planets.length; i++) {
-  // planets[i] pulls the item at the current index
-  console.log(i + 1 + " 👉🏻 " + planets[i]);
-} // 0 👉🏻 Mercury , 1 👉🏻 Venus, 2 👉🏻 Earth
+let sum01 = 0;
 
-// >>>>>   3. the WHILE loop <<<<<<
-/* 
-Use it when you DON"t know the number of rounds in advance,
-only a condition to keep goind. It checks the condition FIRST,
-so if it starts false, the body NEVER runs.
+for (let i = 1; i <= 10; i++) {
+  sum01 += i;
+}
 
-WARNING: you must change something inside the loop so the condition eventually becomes false, othweeise it runs forever (infinit loop (Mousa))
-*/
+console.log(sum01);
 
-let fuel = 5;
+//5.
 
-while (fuel > 0) {
-  console.log("launching, fuel left " + fuel);
-  fuel--;
-  // substract 1 each round, this is the "exit path"
-} // Runs 5 tims, then fuel hits - and the loop stops, call Mousa for refuling
+let arr02 = [1, 2, 3, 4, 5];
+let largest = arr02[0];
 
-/* >>>>>   4. THE do.. while loop <<<<<<
-same idea as while, but the check happens at the END.
-That means the body ALWAYS runs at least once, even if the condition is false from the start
-*/
+for (let i = 1; i < arr02.length; i++) {
+  if (arr02[i] > largest) {
+    largest = arr02[i];
+  }
+}
 
-let attempts = 3;
-do {
-  console.log("Checking systems, attempt " + attempts);
-  attempts--;
-} while (attempts > 0);
-// will run at lease one time, here it runs 3 times
+console.log(largest);
 
-/* ===== 5. break AND continue =====
-   Two keywords that give you control inside any loop:
+//6.
 
-   break    stops the loop completely and jumps out
-   continue skips the REST of THIS round and moves to the next */
-const crew = ["Omar", "Tamara", "Yousif", "Shawabkeh", "Shatha"];
+let arr04 = [1, 2, 3, 4, 5];
+let sum02 = 0;
 
-for (let i = 0; i < crew.length; i++) {
-  if (crew[i] == "Omar") {
-    continue; //skil Omar, keep looking the others
+for (let i = 0; i < arr04.length; i++) {
+  sum02 += arr04[i];
+}
+
+let average = sum02 / arr04.length;
+
+console.log(average);
+
+//7.
+
+let num01 = 5;
+let factorial = 1;
+
+for (let i = 1; i <= num01; i++) {
+  factorial *= i;
+}
+
+console.log(factorial);
+
+//8.
+
+let num02 = 10;
+
+let first = 0;
+let second = 1;
+
+for (let i = 0; first <= num02; i++) {
+  console.log(first);
+
+  let next = first + second;
+
+  first = second;
+  second = next;
+}
+
+//9.
+
+let num03 = 20;
+
+for (let i = 2; i <= num03; i++) {
+  let isPrime = true;
+
+  for (let j = 2; j < i; j++) {
+    if (i % j === 0) {
+      isPrime = false;
+      break;
+    }
   }
 
-  if (crew[i] == "Shawabkeh") {
-    break; //stop entirely the moment we reach Tamara
+  if (isPrime) {
+    console.log(i);
   }
-
-  console.log("Crew member: " + crew[i]);
 }
-console.log("test");
 
-/* ===== 6. NESTED LOOPS =====
-   A loop inside a loop. For EACH round of the outer loop, the
-   inner loop runs fully. Great for grids, tables, and pairs.
-   Here: for each row, print every seat in that row. */
+//10.
 
-//  The outer loop controls the number o lines (rows)
-// will start from 1 and continues until line 6
-for (let line = 1; line <= 6; line++) {
-  // create an empty string for the current line
-  let stars = "";
+let arr05 = [
+  [1, 2, 3],
+  [4, 5, 6],
+  [7, 8, 9],
+];
 
-  // inner loop controls how many stars are printed on the current line
-  // the number of repetitions depends on the current line number.
-  for (let star = 1; star <= line; star++) {
-    // Add one star to the current line
-    stars += "*";
+for (let i = 0; i < arr05.length; i++) {
+  for (let j = 0; j < arr05[i].length; j++) {
+    console.log(arr05[i][j]);
   }
-
-  // Print the completed line of stars
-  console.log(stars);
 }
 
-/* ===== 7. THE for...of LOOP =====
-   The cleanest way to loop over the VALUES of an array. No index,
-   no length, no counter. Read it as "for each planet OF planets".
-   Use this when you just want the items and not their position. */
-// for (const newVariableName of arrayName
+//11.
 
-for (const planet of planets) {
-  console.log("Visiting " + planet);
+let arr06 = [1, 2, 3, 4, 5];
+
+for (let i = arr06.length - 1; i >= 0; i--) {
+  console.log(arr06[i]);
 }
 
-/* ===== 8. THE for...in LOOP =====
-   Used for OBJECTS, to loop over their KEYS (property names).
-   An object stores data as key and value pairs. for...in hands
-   you each key, then we read the value with object[key]. */
-const mission = {
-  name: "Voyager",
-  year: 1977,
-  target: "deep space",
-};
+//12.
 
-for (const key in mission) {
-  // key is the property name, mission[key] is its value
-  console.log(key + ": " + mission[key]);
+let arr07 = [1, 2, 3, 4, 5];
+
+for (let i = 0; i < arr07.length; i += 2) {
+  console.log(arr07[i]);
 }
 
-/* ===== 9. THE forEach METHOD =====
-   Arrays have a built-in .forEach that loops for you. You give it
-   a function, and it runs that function once per item, passing
-   the item (and optionally its index). Very common in real code. */
-planets.forEach(function (planet, index) {
-  console.log(index + ": " + planet);
+//13.
+
+let arr08 = [1, 2, 1, 3, 2, 1];
+let number = 1;
+let count = 0;
+
+for (let i = 0; i < arr08.length; i++) {
+  if (arr08[i] === number) {
+    count++;
+  }
+}
+
+console.log(count);
+
+//14.
+
+const heros = [
+  { name: "Iron Man", power: "Tech" },
+  { name: "Spider-Man", power: "Spider abilities" },
+  { name: "Thor", power: "Godly powers" },
+  { name: "Hulk", power: "Super strength" },
+];
+
+const newHeros = heros.map(function (hero, index) {
+  return {
+    hero: hero.name,
+    power: hero.power,
+    id: index,
+  };
 });
-// 0: Mercury
-// 1: VEnus
-// 2: Earth
-// 3: Mars
 
-/* ============================================================
-   RECAP for the students:
-   for         you know how many rounds (counter based)
-   while       repeat WHILE a condition stays true
-   do...while  same, but always runs at least once
-   break       jump out of the loop entirely
-   continue    skip the current round only
-   nested      a loop inside a loop, for grids and pairs
-   for...of    loop the VALUES of an array, clean and simple
-   for...in    loop the KEYS of an object
-   forEach     the array's own built-in loop method
-   ============================================================ */
+console.log(newHeros);
+
+//15.
+
+function filterWords(inputWords) {
+  return inputWords.filter(function (word) {
+    return word.length > 7;
+  });
+}
+
+const inputWords = [
+  "spray",
+  "limit",
+  "elite",
+  "exuberant",
+  "destruction",
+  "present",
+];
+
+console.log(filterWords(inputWords));
+
+//16.
+
+const numbers = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
+
+const sumSquaredDivisibleBy5 = numbers.reduce(function (sum, number) {
+  if (number % 5 === 0) {
+    sum += number * number;
+  }
+
+  return sum;
+}, 0);
+
+console.log(sumSquaredDivisibleBy5);

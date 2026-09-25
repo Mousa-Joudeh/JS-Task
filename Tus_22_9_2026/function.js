@@ -1,43 +1,125 @@
-/* ===== 1. DECLARING AND CALLING A FUNCTION =====
-   Two steps that people often confuse:
+//1.
 
-   Declaring = writing the function, defining what it does.
-               Nothing happens yet, it's just sitting there ready.
-   Calling   = actually running it, using its name followed by ().
-
-   Without the call, the code inside NEVER runs. */
-function greet() {
-  console.log("Welcome to Space Explorer");
+function findSmallest(arr) {
+  return Math.min(...arr);
 }
 
-greet();
-greet();
+console.log(findSmallest([30, 5, 60, 7]));
 
-/* ===== 2. PARAMETERS AND ARGUMENTS =====
-   To make a function flexible, we let it receive input.
+//2.
 
-   Parameter = the placeholder in the definition (name below)
-   Argument  = the real value we pass in when we call it
-
-   Same function, different arguments, different output. */
-
-function greetAstronaut(name) {
-  //name is the parameter
-  console.log("Ready for launch, " + name);
+function AlphabeticalOrder(str) {
+  return str.split("").sort().join("");
 }
 
-greetAstronaut("Rema"); // Rema is the argument
-greetAstronaut("Raghad Shennawi");
+console.log(AlphabeticalOrder("hello"));
 
-/* ===== 3. MULTIPLE PARAMETERS =====
-   A function can take more than one input, separated by commas.
-   The order matters: the first argument fills the first parameter,
-   and so on. */
+//3.
 
-function describePlanet(planet, moons) {
-  console.log(planet + " has " + moons + " moon ");
+function factorial(n) {
+  let result = 1;
+
+  for (let i = 1; i <= n; i++) {
+    result *= i;
+  }
+
+  return result;
 }
 
-describePlanet("earth", 1);
-describePlanet("Mars", 2);
-describePlanet("Jupiter", 95);
+console.log(factorial(8));
+
+//4.
+
+function oddOrEven(number) {
+  if (number % 2 === 0) {
+    return "even";
+  } else {
+    return "odd";
+  }
+}
+
+console.log(oddOrEven(9));
+
+//5.
+
+function addUp(num) {
+  let sum = 0;
+  for (i = num; i > 0; i--) {
+    sum += i;
+  }
+  return sum;
+}
+
+console.log(addUp(8));
+
+//6.
+
+function minMaxLengthAverage(arr) {
+  let min = Math.min(...arr);
+  let max = Math.max(...arr);
+  let length = arr.length;
+
+  let sum = 0;
+
+  for (let i = 0; i < arr.length; i++) {
+    sum += arr[i];
+  }
+
+  let average = sum / length;
+
+  return [min, max, length, average];
+}
+
+console.log(minMaxLengthAverage([7, 13, 3, 77, 100]));
+
+//7.
+
+function countWords(str) {
+  return str.split(" ").length;
+}
+
+console.log(countWords("hello from CodingAcademy!"));
+
+//8.
+
+function MultiplyByLength(arr) {
+  let result = [];
+
+  for (let i = 0; i < arr.length; i++) {
+    result.push(arr[i] * arr.length);
+  }
+
+  return result;
+}
+
+console.log(MultiplyByLength([4, 2, 5]));
+
+//9.
+
+function checkEnding(str1, str2) {
+  return str1.endsWith(str2);
+}
+
+console.log(checkEnding("CodingSchool", "Ac"));
+
+//10.
+
+function doubleChar(str) {
+  let result = "";
+
+  for (let i = 0; i < str.length; i++) {
+    result += str[i] + str[i];
+  }
+
+  return result;
+}
+
+console.log(doubleChar("Coding"));
+
+//11.
+
+function findIndex(arr, element) {
+  return arr.indexOf(element) + 1;
+}
+
+console.log(findIndex(["Ali", "Mazen", "Ayham", "Murad"], "Ali"));
